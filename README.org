@@ -26,10 +26,10 @@ The main features (different from MADRL) of the modified Waterworld environment 
 * 4. Install
 
 - Install [[https://github.com/sisl/MADRL][MADRL]].
-- Replace the `madrl_environments/pursuit' directory with the one in this repo.
-- `python main.py' 
+- Replace the =madrl_environments/pursuit= directory with the one in this repo.
+- =python main.py=
 
-if scene rendering is enabled, recommend to install `opencv' through [[https://github.com/conda-forge/opencv-feedstock][conda-forge]].
+if scene rendering is enabled, recommend to install =opencv= through [[https://github.com/conda-forge/opencv-feedstock][conda-forge]].
 
 * 5. Results
 
