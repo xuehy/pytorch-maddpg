@@ -34,6 +34,8 @@ if scene rendering is enabled, recommend to install =opencv= through [[https://g
 * 5. Results
 
 ** two agents, cooperation = 2
+The two agents need to cooperate to achieve the food for reward 10.
+
 [[PNG/3.png]]
 
 the average
@@ -45,3 +47,6 @@ the average
 [[PNG/newplot.png]]
 
 
+* 6. TODO
+
+- reproduce the experiments in the paper with competitive environments.
