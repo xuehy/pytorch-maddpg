@@ -34,14 +34,14 @@ if scene rendering is enabled, recommend to install =opencv= through [[https://g
 * 5. Results
 
 ** two agents, cooperation = 2
-[[3.png]]
+[[PNG/3.png]]
 
 the average
 
-[[4.png]]
+[[PNG/4.png]]
 
 ** one agent, cooperation = 1
 
-[[newplot.png]]
+[[PNG/newplot.png]]
 
 
