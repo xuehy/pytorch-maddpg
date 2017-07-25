@@ -40,6 +40,8 @@ the average
 
 [[4.png]]
 
+** one agent, cooperation = 1
 
+[[newplot.png]]
 
 
