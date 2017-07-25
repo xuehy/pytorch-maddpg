@@ -34,7 +34,6 @@ if scene rendering is enabled, recommend to install `opencv' through [[https://g
 * 5. Results
 
 ** two agents, cooperation = 2
-#+ATTR_HTML style="center"
 [[3.png]]
 
 the average
