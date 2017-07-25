@@ -1,0 +1,46 @@
+#+TITLE: An implementation of MADDPG
+#+AUTHOR: xuehy
+#+EMAIL: hyxue@outlook.com
+#+STARTUP: content
+
+* 1. Introduction
+
+This is an pytorch implementation of multi-agent deep deterministic policy gradient algorithm.
+
+The experimental environment is a modified version of Waterworld based on [[https://github.com/sisl/MADRL][MADRL]]. 
+
+* 2. Environment
+
+The main features (different from MADRL) of the modified Waterworld environment are:
+
+- evaders and poisons now bounce at the wall obeying physical rules
+- sizes of the evaders, pursuers and poisons are now the same
+
+* 3. Dependency
+
+- [[https://github.com/pytorch/pytorch][pytorch]]
+- [[https://github.com/facebookresearch/visdom][visdom]]
+- `python==3.6.1' (recommend using the anaconda/miniconda)
+- if you need to render the environments, `opencv' is required
+
+* 4. Install
+
+- Install [[https://github.com/sisl/MADRL][MADRL]].
+- Replace the `madrl_environments/pursuit' directory with the one in this repo.
+- `python main.py' 
+
+if scene rendering is enabled, recommend to install `opencv' through [[https://github.com/conda-forge/opencv-feedstock][conda-forge]].
+
+* 5. Results
+
+** two agents, cooperation = 2
+#+ATTR_HTML style="center"
+[[3.png]]
+
+the average
+
+[[4.png]]
+
+
+
+
