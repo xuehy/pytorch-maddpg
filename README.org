@@ -5,7 +5,7 @@
 
 * 1. Introduction
 
-This is an pytorch implementation of [[https://arxiv.org/abs/1706.02275][multi-agent deep deterministic policy gradient algorithm]].
+This is a pytorch implementation of [[https://arxiv.org/abs/1706.02275][multi-agent deep deterministic policy gradient algorithm]].
 
 The experimental environment is a modified version of Waterworld based on [[https://github.com/sisl/MADRL][MADRL]]. 
 
