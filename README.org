@@ -15,6 +15,7 @@ The main features (different from MADRL) of the modified Waterworld environment 
 
 - evaders and poisons now bounce at the wall obeying physical rules
 - sizes of the evaders, pursuers and poisons are now the same so that random actions will lead to average rewards around 0.
+- need exactly n_coop agents to catch food.
 
 * 3. Dependency
 
