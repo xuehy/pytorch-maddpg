@@ -180,11 +180,11 @@ class MAWaterWorld_mod(AbstractMAEnv, EzPickle):
     def _caught(self, is_colliding_N1_N2, n_coop):
         """ Checke whether collision results in catching the object
 
-        This is because you need `n_coop` agents to collide with the object to actually catch it
+        This is because you need exactly `n_coop` agents to collide with the object to actually catch it
         """
         # number of N1 colliding with given N2
         n_collisions_N2 = is_colliding_N1_N2.sum(axis=0)
-        is_caught_cN2 = np.where(n_collisions_N2 >= n_coop)[0]
+        is_caught_cN2 = np.where(n_collisions_N2 == n_coop)[0]
 
         # number of N2 colliding with given N1
         who_collisions_N1_cN2 = is_colliding_N1_N2[:, is_caught_cN2]
