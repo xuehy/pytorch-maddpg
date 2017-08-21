@@ -36,6 +36,7 @@ if scene rendering is enabled, recommend to install =opencv= through [[https://g
 
 ** two agents, cooperation = 2
 The two agents need to cooperate to achieve the food for reward 10.
+
 [[PNG/demo.gif]]
 
 [[PNG/3.png]]
