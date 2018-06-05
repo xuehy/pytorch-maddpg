@@ -1,4 +1,3 @@
-from torch.autograd import Variable
 from madrl_environments.pursuit import MAWaterWorld_mod
 from MADDPG import MADDPG
 import numpy as np
@@ -55,7 +54,7 @@ for i_episode in range(n_episode):
         # render every 100 episodes to speed up training
         if i_episode % 100 == 0 and e_render:
             world.render()
-        obs = Variable(obs).type(FloatTensor)
+        obs = obs.type(FloatTensor)
         action = maddpg.select_action(obs).data.cpu()
         obs_, reward, done, _ = world.step(action.numpy())
 

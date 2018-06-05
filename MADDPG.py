@@ -4,7 +4,6 @@ from copy import deepcopy
 from memory import ReplayMemory, Experience
 from torch.optim import Adam
 from randomProcess import OrnsteinUhlenbeckProcess
-from torch.autograd import Variable
 import torch.nn as nn
 import numpy as np
 from params import scale_reward
@@ -78,13 +77,13 @@ class MADDPG:
             non_final_mask = ByteTensor(list(map(lambda s: s is not None,
                                                  batch.next_states)))
             # state_batch: batch_size x n_agents x dim_obs
-            state_batch = Variable(th.stack(batch.states).type(FloatTensor))
-            action_batch = Variable(th.stack(batch.actions).type(FloatTensor))
-            reward_batch = Variable(th.stack(batch.rewards).type(FloatTensor))
+            state_batch = th.stack(batch.states).type(FloatTensor)
+            action_batch = th.stack(batch.actions).type(FloatTensor)
+            reward_batch = th.stack(batch.rewards).type(FloatTensor)
             # : (batch_size_non_final) x n_agents x dim_obs
-            non_final_next_states = Variable(th.stack(
+            non_final_next_states = th.stack(
                 [s for s in batch.next_states
-                 if s is not None]).type(FloatTensor))
+                 if s is not None]).type(FloatTensor)
 
             # for current agent
             whole_state = state_batch.view(self.batch_size, -1)
@@ -98,13 +97,12 @@ class MADDPG:
                                                             :]) for i in range(
                                                                 self.n_agents)]
             non_final_next_actions = th.stack(non_final_next_actions)
-#            non_final_next_actions = Variable(non_final_next_actions)
             non_final_next_actions = (
                 non_final_next_actions.transpose(0,
                                                  1).contiguous())
 
-            target_Q = Variable(th.zeros(
-                self.batch_size).type(FloatTensor))
+            target_Q = th.zeros(
+                self.batch_size).type(FloatTensor)
             target_Q[non_final_mask] = self.critics_target[agent](
                 non_final_next_states.view(-1, self.n_agents * self.n_states),
                 non_final_next_actions.view(-1,
@@ -140,17 +138,16 @@ class MADDPG:
 
     def select_action(self, state_batch):
         # state_batch: n_agents x state_dim
-        actions = Variable(th.zeros(
+        actions = th.zeros(
             self.n_agents,
-            self.n_actions))
+            self.n_actions)
         FloatTensor = th.cuda.FloatTensor if self.use_cuda else th.FloatTensor
         for i in range(self.n_agents):
             sb = state_batch[i, :].detach()
             act = self.actors[i](sb.unsqueeze(0)).squeeze()
 
-            act += Variable(
-                th.from_numpy(
-                    np.random.randn(2) * self.var[i]).type(FloatTensor))
+            act += th.from_numpy(
+                np.random.randn(2) * self.var[i]).type(FloatTensor)
 
             if self.episode_done > self.episodes_before_train and\
                self.var[i] > 0.05:
