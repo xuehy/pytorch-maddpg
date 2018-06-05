@@ -103,14 +103,16 @@ class MADDPG:
 
             target_Q = th.zeros(
                 self.batch_size).type(FloatTensor)
+
             target_Q[non_final_mask] = self.critics_target[agent](
                 non_final_next_states.view(-1, self.n_agents * self.n_states),
                 non_final_next_actions.view(-1,
-                                            self.n_agents * self.n_actions))
-
+                                            self.n_agents * self.n_actions)
+            ).squeeze()
             # scale_reward: to scale reward in Q functions
-            target_Q = (target_Q * self.GAMMA) + (
-                reward_batch[:, agent] * scale_reward)
+
+            target_Q = (target_Q.unsqueeze(1) * self.GAMMA) + (
+                reward_batch[:, agent].unsqueeze(1) * scale_reward)
 
             loss_Q = nn.MSELoss()(current_Q, target_Q.detach())
             loss_Q.backward()
